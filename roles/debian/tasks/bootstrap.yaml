@@ -1,0 +1,171 @@
+# Bootstrap Debian Host (Set in Inventory)
+
+
+## 1. Set hostname and timezone
+
+# 1. Set hostname
+# 2. Configure timezone
+#
+# [Requires] `host_vars` for hostname:
+#  bootstrap:
+#    hostname: 'pihole'
+#    tz: 'Australia/Sydney'
+
+- name: Set hostname in /etc/hostname
+  ansible.builtin.hostname: 
+    name: "{{ hostvars[inventory_hostname]['bootstrap']['hostname'] }}" 
+  tags:
+    - config
+    
+- name: Add hostname to /etc/hosts
+  ansible.builtin.lineinfile: 
+    path: '/etc/hosts'
+    state: present
+    regexp: '^127\.0\.0\.1[ \t]+localhost'
+    line: 127.0.0.1 localhost "{{ hostvars[inventory_hostname]['bootstrap']['hostname'] }}"
+  notify: Raspberry Pi Restart 
+  tags:
+    - config
+
+- name: Set timezone for server
+  community.general.timezone:
+    name: "{{ hostvars[inventory_hostname]['bootstrap']['tz'] }}"
+  notify: Raspberry Pi Restart 
+  tags:
+    - config
+
+
+## 2. Update distribution and latest packages
+
+- name: Upgrade distribution if available
+  ansible.builtin.apt: 
+    upgrade: dist
+  tags:
+    - config
+
+- name: Update installed packages to their latest version
+  ansible.builtin.apt: 
+    name: "*"
+    state: latest
+  tags:
+    - config
+
+- name: Debug group variables
+  ansible.builtin.debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 4
+  tags:
+    - never
+    - debug
+
+- name: Install bootstrap packages
+  ansible.builtin.apt: 
+    name: "{{ bootstrap_packages }}"
+    state: latest
+    autoclean: yes
+    autoremove: yes
+  tags:
+    - config
+
+
+## 3. Setup default users 'ian' & `ansible`
+
+- name: Set up `ian` user
+  ansible.builtin.include_role:
+    name: debian
+    tasks_from: user_ian.yaml
+  tags:
+    - config
+
+- name: Set up `ansible` user
+  ansible.builtin.include_role:
+    name: debian
+    tasks_from: user_ansible.yaml
+  tags:
+    - config
+
+
+## 4. Setup ssh daemon
+
+- name: Don't permit root login
+  ansible.builtin.lineinfile: 
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+  tags:
+    - config
+
+# - name: Don't allow authentication login
+#   ansible.builtin.lineinfile:
+#     path: /etc/ssh/sshd_config
+#     state: present
+#     regexp: "^PasswordAuthentication"
+#     line: "PasswordAuthentication no"
+#   tags:
+#     - config
+
+# The "keyboard-interactive" authentication scheme could ask a user any number 
+# of multi-faceted questions. In practice it often asks only for the user's password.
+- name: Don't challenge response authentication
+  ansible.builtin.lineinfile: 
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^ChallengeResponseAuthentication"
+    line: "ChallengeResponseAuthentication no"
+  tags:
+    - config
+
+# Out dated advice says turn this off because it runs as root. Not any more, so
+# keeping this on
+- name: Don't use PAM
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^UsePAM"
+    line: "UsePAM yes"
+  tags:
+    - config
+
+
+## 5. Set up default firewall
+
+- name: Install dependencies
+  ansible.builtin.apt: 
+    name:
+      - ufw
+    state: latest
+    autoclean: yes
+    autoremove: yes
+  tags:
+    - config
+
+- name: Allow SSH connections - anti lockout
+  community.general.ufw:
+    rule: allow
+    name: OpenSSH
+    comment: "ALLOW SSH port - anti lockout"
+  notify: UFW Restart 
+  tags:
+    - config
+
+- name: Allow all access from RFC1918 networks
+  community.general.ufw:
+    rule: allow
+    src: '{{ item }}'
+    comment: Allow RFC1918 networks
+  loop: "{{ home_networks }}"
+  notify: UFW Restart
+  tags:
+    - config
+
+- name: Deny all other incoming traffic by default
+  community.general.ufw:
+    rule: deny
+    direction: in
+    log: yes
+    state: enabled
+    comment: Default DENY incoming traffic
+  notify: UFW Restart
+  tags:
+    - config

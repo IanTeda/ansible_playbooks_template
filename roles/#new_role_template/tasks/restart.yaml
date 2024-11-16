@@ -1,0 +1,16 @@
+- name: Restart linux host
+  become: true
+  ansible.builtin.reboot:
+    msg: 'Reboot initiated by Ansible'
+  tags:
+    - always
+
+# ## We don't really need this one
+# - name: 'Wait for {{ inventory_hostname }} to come back up'
+#   ansible.builtin.wait_for:
+#     host: "{{ hostvars[inventory_hostname].dhcp.ip_address }}"
+#     port: 22
+#   connection: local # Do not assume the inventory_hostname is resolvable so use local
+#   tags:
+#    - never
+#    - debug

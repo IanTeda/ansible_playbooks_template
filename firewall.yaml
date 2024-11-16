@@ -1,0 +1,11 @@
+# FIREWALL PLAYBOOK
+#
+# pfSense firewall
+# =============================================================================
+
+# $ ansible-playbook firewall.yaml --tags "static_ip,bootstrap"
+- name: Firewall Playbook
+  hosts: pfsense
+  gather_facts: true
+  roles:
+    - role: pfsense

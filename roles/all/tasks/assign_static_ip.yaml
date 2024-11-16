@@ -1,0 +1,27 @@
+## PFSENSE DHCP STATIC MAPPING
+## Statically assign ip address in DHCP server
+## ============================================
+
+- name: Confirm variables passed to task
+  ansible.builtin.debug:
+    msg: 'DHCP variables include: {{ pfsense_dhcp }}'
+  tags:
+    - never
+    - debug
+
+## https://github.com/pfsensible/core/wiki/pfsense_dhcp_static
+- name: 'Assign Static IP: {{ pfsense_dhcp.ip_address }} to {{ pfsense_dhcp.hostname }}'
+  delegate_to: firewall
+  pfsensible.core.pfsense_dhcp_static:
+    macaddr: "{{ pfsense_dhcp.mac_address }}"
+    name: "{{ pfsense_dhcp.client_identifier }}"
+    ipaddr: "{{ pfsense_dhcp.ip_address }}"
+    hostname: "{{ pfsense_dhcp.hostname }}"
+    descr: "{{ pfsense_dhcp.description }}"
+    netif: "{{ pfsense_dhcp.interface }}"
+    dnsserver: "{{ pfsense_dhcp.dnsserver }}"
+    state: present
+  tags:
+    - pfsense
+    - config
+    - static_ips

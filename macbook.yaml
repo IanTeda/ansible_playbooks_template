@@ -1,0 +1,11 @@
+# MACBOOK PLAYBOOK
+#
+# Apple Macbook playbook
+# =============================================================================
+
+# $ ansible-playbook macbook.yaml --tags "static_ip,bootstrap"
+- name: MacBook Playbook
+  hosts: macbook
+  gather_facts: true
+  roles:
+    - role: macbook

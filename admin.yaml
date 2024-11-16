@@ -1,0 +1,11 @@
+# AMIN TASKS
+#
+# Raspberry pi administration server
+# =============================================================================
+
+# $ ansible-playbook admin.yaml --tags "static_ip,bootstrap"
+- name: Pi Admin
+  hosts: admin
+  gather_facts: true
+  roles:
+    - role: admin

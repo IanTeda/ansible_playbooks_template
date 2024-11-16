@@ -1,0 +1,15 @@
+# ansible-playbook admin.yaml --tags="router,config"
+- name: Assign static IP on pfsense router
+  ansible.builtin.include_role:
+    name: all
+    tasks_from: assign_static_ip.yaml
+  tags:
+    - router
+
+# ansible-playbook admin.yaml --tags="bootstrap,config"
+- name: Bootstrap the system
+  ansible.builtin.include_role:
+    name: debian
+    tasks_from: bootstrap.yaml
+  tags:
+    - bootstrap

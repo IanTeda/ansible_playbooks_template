@@ -1,10 +1,20 @@
 {
     "cSpell.words": [
+        "autoclean",
+        "autoremove",
+        "descr",
         "dnsserver",
+        "hostvars",
         "imac",
+        "ipaddr",
+        "lineinfile",
+        "macaddr",
         "macbook",
+        "netif",
         "pfsense",
+        "pfsensible",
         "pihole",
         "raspberrypi"
-    ]
+    ],
+    "ansible.python.interpreterPath": "/usr/bin/python3"
 }

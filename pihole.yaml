@@ -1,0 +1,11 @@
+# PIHOLE PLAYBOOK
+#
+# Raspberry Pi Hole playbook
+# =============================================================================
+
+# $ ansible-playbook pihole.yaml --tags "static_ip,bootstrap"
+- name: Pi Hole Playbook
+  hosts: pihole
+  gather_facts: true
+  roles:
+    - role: pihole

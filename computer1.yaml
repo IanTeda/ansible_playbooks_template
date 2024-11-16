@@ -1,0 +1,11 @@
+# COMPUTER1 TASKS
+#
+# Windows computer 1
+# =============================================================================
+
+# $ ansible-playbook computer1.yaml --tags "static_ip,bootstrap"
+- name: Computer 1
+  hosts: admin
+  gather_facts: true
+  roles:
+    - role: computer1
