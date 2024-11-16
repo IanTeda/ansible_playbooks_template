@@ -1,7 +1,39 @@
-# Byte-compiled / optimized / DLL files
+# By Default, Ignore any .*, except for:
+.*
+!.gitignore
+!.github
+!.devcontainer
+!.vscode
+!.gitmodules
+
+# By default, Ignore any _*, except for:
+_*
+
+# --- Safety net
 __pycache__/
 *.py[cod]
 *$py.class
+__pycache__/
+node_modules/
+npm-debug.log
+report.*.json
+*.parquet
+*.map
+*.zip
+*.gz
+*.tar
+*.tgz
+# Videos
+*.mov
+*.mp4
+# Images
+*.icns
+*.ico
+*.jpeg
+*.jpg
+*.png
+# Logs
+*.log
 
 # C extensions
 *.so
