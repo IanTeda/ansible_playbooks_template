@@ -6,6 +6,9 @@
 !.vscode
 !.gitmodules
 
+# Don't store ansible collection
+ansible_collections
+
 # By default, Ignore any _*, except for:
 _*
 
