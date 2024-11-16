@@ -6,8 +6,15 @@ A git repository template for getting started with Ansible.
 
 The `ansible.cfg` file sets the location of the following files
 
+- `inventory = ./inventory`
 - `private_key_file = ~/.ssh/ansible`
 - `vault_password_file = ~/.ansible/vault-pass.txt`
+
+### Inventory
+
+`inventory` sets the location of the host inventory files. This can be `.ini` or `.yaml`.
+The inventory file can be one file or broken up. I like to break then up per host group.
+
 
 ### Private Key File
 

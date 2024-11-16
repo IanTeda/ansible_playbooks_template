@@ -1,0 +1,12 @@
+## RASPBERRY PI HOSTS
+##
+## A list of devices to include in the raspberrypi group
+## =============================================================================
+
+all:
+  children:
+    raspberrypi:
+      hosts:
+        pihole:
+        print_server:
+        admin:

@@ -1,0 +1,10 @@
+## WINDOWS HOSTS
+##
+## A list of devices to include in the windows group
+## =============================================================================
+
+all:
+  children:
+    windows:
+      hosts:
+        computer1:

@@ -1,0 +1,10 @@
+## PFSENSE HOSTS
+##
+## A list of devices to include in the pfsense group
+## =============================================================================
+
+all:
+  children:
+    pfsense:
+      hosts:
+        firewall:

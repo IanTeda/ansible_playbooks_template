@@ -1,0 +1,16 @@
+## ALL HOSTS
+##
+## The complete list of devices, so you can find a host if not in another group
+## =============================================================================
+
+all:
+  children:
+    all_devices:
+      hosts:
+        firewall:
+        computer1:
+        pihole:
+        print_server:
+        admin:
+
+        

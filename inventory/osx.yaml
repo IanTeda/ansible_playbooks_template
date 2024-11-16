@@ -1,0 +1,12 @@
+## OSX HOSTS
+##
+## A list of devices to include in the osx group
+## =============================================================================
+
+all:
+  children:
+    osx:
+      hosts:
+        pihole:
+        print_server:
+        admin:

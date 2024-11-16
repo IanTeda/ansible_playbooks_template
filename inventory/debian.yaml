@@ -1,0 +1,12 @@
+## DEBIAN HOSTS
+##
+## A list of devices to include in the debian group
+## =============================================================================
+
+all:
+  children:
+    debian:
+      hosts:
+        pihole:
+        print_server:
+        admin:
