@@ -9,6 +9,9 @@
 # Don't store ansible collection
 ansible_collections
 
+# Do not commit the all.yaml file for security
+group_vars/all.yaml
+
 # By default, Ignore any _*, except for:
 _*
 

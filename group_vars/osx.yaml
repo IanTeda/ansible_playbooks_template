@@ -1,0 +1,5 @@
+## OSX HOST VARIABLES
+##
+## Variables for hosts in the osx inventory. These variables will be overwritten
+## by the same variable name in host variables.
+## =============================================================================

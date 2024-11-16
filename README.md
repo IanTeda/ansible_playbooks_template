@@ -2,7 +2,16 @@
 
 A git repository template for getting started with Ansible.
 
-## Using This Repository Template
+## Repository Structure
+
+This repository is put together with the following structure
+
+1. ansible.cfg
+2. Host Inventory
+3. Group Variables
+4. Host Variables
+
+## Ansible Config
 
 The `ansible.cfg` file sets the location of the following files
 
@@ -28,6 +37,7 @@ and decrypting vaults. This stores the password in plain text and should be outs
 of your repository with the appropriate file permissions set. This allows encrypted 
 vaults to be stored in the repository without exposing the secrets.
 
-## Repository Structure
+## Group Variables
 
-This repository is put together with the following structure
+`./group_vars` create a group variable for each inventory group. The 'all.yaml' 
+can be used as a vault (encrypted) and or ignored.

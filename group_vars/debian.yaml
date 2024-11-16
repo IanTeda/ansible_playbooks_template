@@ -1,0 +1,6 @@
+## DEBIAN HOST VARIABLES
+##
+## Variables for hosts in the debian inventory. These variables will be overwritten
+## by the same variable name in host variables.
+## =============================================================================
+

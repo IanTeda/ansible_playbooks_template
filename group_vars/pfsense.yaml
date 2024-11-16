@@ -1,0 +1,5 @@
+## PFSENSE HOST VARIABLES
+##
+## Variables for hosts in the pfsense inventory. These variables will be overwritten
+## by the same variable name in host variables.
+## =============================================================================
