@@ -7,10 +7,8 @@ all:
   children:
     all_devices:
       hosts:
-        firewall:
-        computer1:
-        pihole:
-        print_server:
         admin:
-
-        
+        computer1:
+        firewall:
+        macbook:
+        pihole:

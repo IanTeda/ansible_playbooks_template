@@ -8,5 +8,4 @@ all:
     raspberrypi:
       hosts:
         pihole:
-        print_server:
         admin:

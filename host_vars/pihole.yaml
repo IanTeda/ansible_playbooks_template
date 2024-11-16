@@ -1,0 +1,28 @@
+## PIHOLE HOST VARS
+##
+## Host variables for the pihole host
+## =============================================================================
+
+## Ansible host connection variables
+## https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#connection-variables
+ansible_host: 192.168.1.13
+ansible_python_interpreter: /usr/bin/python3.11
+
+# Static DHCP IP assignment variables used by pfsense firewall task
+dhcp:
+  wired:
+    mac_address: 'a5:5c:40:3b:f1:h3'
+    client_identifier: 'pihole:f1h3'
+    ip_address: 192.168.1.13
+    hostname: 'pihole'
+    description: 'pihole wired interface'
+    interface: 'lan'
+    dnsserver: ''
+  wifi:
+    mac_address: 'a5:5c:40:3b:f1:h4'
+    client_identifier: 'pihole:f1h4'
+    ip_address: 192.168.1.14
+    hostname: 'pihole'
+    description: 'pihole wifi interface'
+    interface: 'lan'
+    dnsserver: ''

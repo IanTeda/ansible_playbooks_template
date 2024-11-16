@@ -1,0 +1,28 @@
+## FIREWALL HOST VARS
+##
+## Host variables for the firewall host
+## =============================================================================
+
+## Ansible host connection variables
+## https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#connection-variables
+ansible_host: 192.168.1.7
+ansible_python_interpreter: /usr/local/bin/python3.11
+
+# Static DHCP IP assignment variables used by pfsense firewall task
+dhcp:
+  wired:
+    mac_address: 'a5:5c:40:3b:f1:h3'
+    client_identifier: 'firewall:f1h3'
+    ip_address: 192.168.1.7
+    hostname: 'firewall'
+    description: 'firewall wired interface'
+    interface: 'lan'
+    dnsserver: ''
+  wifi:
+    mac_address: 'a5:5c:40:3b:f1:h4'
+    client_identifier: 'firewall:f1h4'
+    ip_address: 192.168.1.8
+    hostname: 'firewall'
+    description: 'firewall wifi interface'
+    interface: 'lan'
+    dnsserver: ''

@@ -7,6 +7,4 @@ all:
   children:
     osx:
       hosts:
-        pihole:
-        print_server:
-        admin:
+        macbook:

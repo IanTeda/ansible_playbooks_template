@@ -41,3 +41,7 @@ vaults to be stored in the repository without exposing the secrets.
 
 `./group_vars` create a group variable for each inventory group. The 'all.yaml' 
 can be used as a vault (encrypted) and or ignored.
+
+## Host Variables
+
+`./host_vars` create a host variable for each host in the inventory
