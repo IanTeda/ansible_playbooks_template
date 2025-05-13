@@ -1,10 +1,10 @@
 # Ansible Playbook Template
 
-A git repository template for getting started with Ansible.
+This repository is a template for getting started with [Ansible](https://www.redhat.com/en/ansible-collaborative). It follows the folder and file structure I found the easiest to use
 
 ## Repository Structure
 
-This repository is put together with the following structure
+I have put together this repository with the following Ansible structure:
 
 1. ansible.cfg
 2. Host Inventory
@@ -13,35 +13,31 @@ This repository is put together with the following structure
 
 ## Ansible Config
 
-The `ansible.cfg` file sets the location of the following files
+The `ansible.cfg` file sets the location of the following key files, and thus points Ansible to the correct folders and files:
 
 - `inventory = ./inventory`
 - `private_key_file = ~/.ssh/ansible`
 - `vault_password_file = ~/.ansible/vault-pass.txt`
 
-### Inventory
+## Inventory
 
-`inventory` sets the location of the host inventory files. This can be `.ini` or `.yaml`.
-The inventory file can be one file or broken up. I like to break then up per host group.
-
-
-### Private Key File
-
-`private_key_file` sets the default location of the ansible user SSH private key
-to access the remote host
-
-### Vault Password File
-
-`vault_password_file` sets the location of the ansible password for encrypting and
-and decrypting vaults. This stores the password in plain text and should be outside
-of your repository with the appropriate file permissions set. This allows encrypted 
-vaults to be stored in the repository without exposing the secrets.
+The host inventory has an entry point of `./inventory/all.yaml`, which builds out the children (groups). This file can be `.ini` or `.yaml`, I prefer to use `.yaml`
+The inventory file are then broken out into the groups defined in `./inventory/all.yaml`
 
 ## Group Variables
 
-`./group_vars` create a group variable for each inventory group. The 'all.yaml' 
-can be used as a vault (encrypted) and or ignored.
+The `./group_vars` are broken down into the groups defined in `./inventory/all.yaml. Global variables should be kept variables are defined in`./group_vars/all.yaml`. Variables of the same name in`./group_vars/all.yaml` will be overwritten by variables in groups suck as `/group_vars/debain.yaml'
 
 ## Host Variables
 
-`./host_vars` create a host variable for each host in the inventory
+The `./host_vars` are broken down into the hosts nominated in inventory group files. Variables of the same name in these files will overwrite variables in `./group_vars`.
+
+## Private Key File
+
+`private_key_file` sets the default location of the Ansible user SSH private key that is used to access the remote host.
+
+For some notes on creating an Ansible user check out [https://ianteda.com/notes/ansible-user/](https://ianteda.com/notes/ansible-user/)
+
+## Vault Password File
+
+`vault_password_file` sets the location of the Ansible password for encrypting and decrypting vaults. This stores the password in plain text and should be outside your repository with the appropriate file permissions set. This allows encrypted vaults to be stored in the repository without revealing secrets.

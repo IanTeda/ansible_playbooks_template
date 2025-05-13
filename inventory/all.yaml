@@ -1,14 +1,22 @@
-## ALL HOSTS
-##
-## The complete list of devices, so you can find a host if not in another group
-## =============================================================================
+---
+#-- ./inventory/all.yaml
+
+# ALL HOSTS
+# =========
+# 
+# This file is the main inventory file and is used to define the inventory structure
+# for all groups (children). It contains the list of all groups that is used for
+# group variables `group_vars`.
+#
+# Verify the inventory structure with the command `$ ansible-inventory --graph`.
+#
+# Note: `children` is used to define groups of hosts and `hosts` is used to define 
+# individual hosts.
 
 all:
   children:
-    all_devices:
-      hosts:
-        admin:
-        computer1:
-        firewall:
-        macbook:
-        pihole:
+    debian:
+    raspberrypi:
+    fedora:
+    windows:
+    osx:

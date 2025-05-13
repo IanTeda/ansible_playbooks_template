@@ -1,6 +1,12 @@
-## DEBIAN HOST VARIABLES
-##
-## Variables for hosts in the debian inventory. These variables will be overwritten
-## by the same variable name in host variables.
-## =============================================================================
+---
+#-- ./group_vars/debian.yaml
+
+# DEBIAN HOST VARIABLES
+# =====================
+#
+# Variables for hosts in the debian inventory. These variables will be overwritten
+# by the same variable name in host variables and will overwrite variables of same name
+# in group_vars/all.yaml.
+#
+# Note: sensitive information should be encrypted with ansible vault
 

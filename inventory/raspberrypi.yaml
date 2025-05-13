@@ -1,11 +1,26 @@
-## RASPBERRY PI HOSTS
-##
-## A list of devices to include in the raspberrypi group
-## =============================================================================
+---
+#-- ./inventory/raspberrypi.yaml
 
-all:
-  children:
-    raspberrypi:
-      hosts:
-        pihole:
-        admin:
+# RASPBERRY PI HOST INVENTORY
+# ===========================
+#
+# This inventory file is used to define the hosts in the raspberry pi group.
+#
+# Note: `children` is used to define groups of hosts and `hosts` is used to define 
+# individual hosts.
+#
+# Ansible host connection variables
+# https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#connection-variables
+
+raspberrypi:
+  hosts:
+    pihole:
+      ansible_host: 192.168.1.21
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3
+    admin:
+      ansible_host: 192.168.1.22
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3

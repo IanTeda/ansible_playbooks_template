@@ -1,0 +1,9 @@
+#-- ./host_vars/macbookpro1.yaml
+
+# MACBOOKPRO1 HOST VARIABLES
+# ==========================
+#
+# Host variables for the macbook pro 1 host. Variable in this file will supersede variables
+# of the same name in group_vars/group and group/vars/all.yaml.
+#
+# Note: sensitive information should be encrypted with ansible vault

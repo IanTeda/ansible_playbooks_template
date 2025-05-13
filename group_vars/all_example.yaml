@@ -1,15 +1,17 @@
-## ALL HOSTS
-##
-## Variables for hosts in the all inventory. These variables will be overwritten
-## by the same variable name in other groups.
-##
-## This file is ignored by `.gitignore` and can be encrypted with the command
-## `ansible-vault encrypt group_vars/all.yaml`
-## or
-## vscode plugin
-## `https://marketplace.visualstudio.com/items?itemName=dhoeric.ansible-vault`
-## =============================================================================
+---
+#-- ./group_vars/all.yaml
 
-# Rename this file to `all.yaml`. I am ignored by git in `.gitignore`.
+# ALL HOSTS
+# ============
+#
+#
+# This file contains variables that apply to all hosts in the inventory.
+# Variables defined here can be overridden by group-specific or host-specific variables.
+#
+# Note: Sensitive values should be encrypted using ansible-vault
+# Run: ansible-vault encrypt_string --name 'default_password' 'your_password_here'
+# to encrypt a password and add it to this file. Alternatively, you can use 
+# ansible-vault to encrypt the entire file. A vscode plugin is available to help with this.
+# - (ansible-vault)[https://marketplace.visualstudio.com/items?itemName=dhoeric.ansible-vault`]
 
 default_password: "<change_password>"

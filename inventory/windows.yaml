@@ -1,10 +1,21 @@
-## WINDOWS HOSTS
-##
-## A list of devices to include in the windows group
-## =============================================================================
+---
+#-- ./inventory/windows.yaml
 
-all:
-  children:
-    windows:
-      hosts:
-        computer1:
+# WINDOWS HOST INVENTORY
+# ======================
+#
+# This inventory file is used to define the hosts in the windows group.
+#
+# Note: `children` is used to define groups of hosts and `hosts` is used to define 
+# individual hosts.
+#
+# Ansible host connection variables
+# https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#connection-variables
+
+windows:
+  hosts:
+    computer1:
+      ansible_host: 192.168.1.31
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3

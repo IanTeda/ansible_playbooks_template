@@ -1,10 +1,31 @@
-## OSX HOSTS
-##
-## A list of devices to include in the osx group
-## =============================================================================
+---
+#-- ./inventory/osx.yaml
 
-all:
-  children:
-    osx:
-      hosts:
-        macbook:
+# OSX HOST INVENTORY
+# ==================
+#
+# This inventory file is used to define the hosts in the apple osx group.
+#
+# Note: `children` is used to define groups of hosts and `hosts` is used to define 
+# individual hosts.
+#
+# Ansible host connection variables
+# https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html#connection-variables
+
+osx:
+  hosts:
+    macbookpro1:
+      ansible_host: 192.168.1.11
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3
+    macbookpro2:
+      ansible_host: 192.168.1.12
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3
+    macbookair1:
+      ansible_host: 192.168.1.13
+      # ansible_user: ansible
+      # ansible_connection: ssh
+      # ansible_python_interpreter: /usr/bin/python3
