@@ -1,0 +1,13 @@
+---
+#-- ./group_vars/all/main.yaml
+
+# ALL HOSTS
+# ============
+#
+# This file contains variables that apply to all hosts in the inventory.
+# Variables defined here can be overridden by group-specific or host-specific variables.
+#
+# Note: Sensitive values should be stored in a separate vault file and encrypted 
+# using ansible-vault.
+
+default_password: "{{ vault_default_password }}"

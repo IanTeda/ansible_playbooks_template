@@ -1,0 +1,28 @@
+---
+#-- ./group_vars/all/vault.example.yaml
+
+# VAULT
+# ======
+#
+# This file is an example of how to structure sensitive variables in Ansible. Copy 
+# this file to `vault.yaml` and modify it as needed.
+#
+# This file contains sensitive variables that should be encrypted using ansible-vault. 
+# It is recommended to use ansible-vault to encrypt the entire file, which can be 
+# done with the command:
+# `ansible-vault encrypt group_vars/all/vault.yaml`.
+#
+# It should be noted that this repository sets the `ANSIBLE_VAULT_PASSWORD_FILE` variable 
+# to plain text file outside of the repository.
+#
+# A vscode plugin is available to help with this:
+# - (ansible-vault)[https://marketplace.visualstudio.com/items?itemName=dhoeric.ansible-vault]
+#
+#  REFERENCE
+#
+# - [Encrypting content with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/vault_encrypting_content.html)
+
+- name: vault_default_password
+  value: "<change_password>"
+  # Note: Replace <change_password> with your actual password.
+  # Ensure this value is encrypted using ansible-vault before committing to version control.

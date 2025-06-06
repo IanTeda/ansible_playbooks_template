@@ -4,6 +4,7 @@
         "autoremove",
         "descr",
         "dnsserver",
+        "gitmodules",
         "hostvars",
         "imac",
         "ipaddr",
@@ -14,6 +15,7 @@
         "pfsense",
         "pfsensible",
         "pihole",
+        "pycache",
         "raspberrypi"
     ],
     "ansible.python.interpreterPath": "/usr/bin/python3"

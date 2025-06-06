@@ -8,5 +8,6 @@
 # by the same variable name in host variables and will overwrite variables of same name
 # in group_vars/all.yaml.
 #
-# Note: sensitive information should be encrypted with ansible vault
+# Note: sensitive information should stored and encrypted in ./group_vars/all/vault.yaml
+# and referenced here with the vault variable. i.e. "{{ vault_variable_name }}"
 
